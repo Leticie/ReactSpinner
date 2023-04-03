@@ -4,22 +4,17 @@ import { useState } from 'react';
 
 function App() {
   const [move, setMove] = useState("stop")
-  console.log(move)
 
-  const handleMove = () => {
-    if (move === "stop") {
-      setMove("spin")
-    }
-    else {
-      setMove("stop")
-    }  
-  }
+  const handleButtonHold = () => setMove("spin")
+  const handleButtonRelease = () => setMove("stop")
+  
+
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} alt="logo" className={`App-logo-${move}`}/>
-        <button className="spin-button" onClick={handleMove}>SPIN</button>
+        <button id="button" className="spin-button" onMouseDown={handleButtonHold} onMouseUp={handleButtonRelease}>SPIN</button>
       </header>
     </div>
   );
